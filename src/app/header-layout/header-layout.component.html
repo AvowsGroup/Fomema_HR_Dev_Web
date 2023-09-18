@@ -1,0 +1,119 @@
+<div class="header">
+    <nav
+      class="navbar navbar-expand navbar-light border-bottom topbar static-top"
+    >
+      <div class="admin-logo"><img [src]="appLogo" /></div>
+      <!-- Topbar Search -->
+      <div class="login-name">
+        <span class="welcome-title"> Hi, Nurul Syahieda Binti Mohamed</span>
+        <span class="welcome-name">Welcome to Fomema</span>
+      </div>
+      
+      <!-- <form
+        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"  
+      >
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control bg-light small"
+            placeholder="Search for..."
+            aria-label="Search"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-primary mt-0" type="button">
+              <i class="fa fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+      </form> -->
+  
+      <!-- Topbar Navbar -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Nav Item - User Information -->
+        <!-- <li class="nav-item">
+          <a href="#" class="nav-link nav-icon iconClass">
+            <i class="fa fa-envelope"></i>
+            <span class="badge badge-primary">2</span>
+          </a>
+        </li> -->
+        <!-- <li class="nav-item login-date">
+          <a href="#" class="nav-link nav-icon iconClass">
+            <i class="fa fa-calendar-o mx-2"></i>last login Date :21-04-2023
+          </a>
+        </li>  -->
+        <li class="nav-item text-right">
+          <!-- Example single danger button -->
+
+          <a
+            class="nav-link nav-icon iconClass"
+            id="navbardrop1"
+            data-toggle="dropdown"
+          >
+            <i class="fa fa-bell"></i>
+            <span class="badge badge-primary">3</span>
+          </a>
+          <div class="dropdown-menu div_notfication">
+            <div class="notification-title">Notification</div>
+            <div class="notification-div">
+              <ul class="li-profile">
+                <li class="dropdown-item">
+                  <div class="notification-content">
+                    <summary class="not-body">
+                      <div class="not-title"> Title</div>
+                      <div class="not-content">
+                       Leave Approved
+                        <span class="not-date">
+                          28-08-2023</span
+                        >
+                      </div>
+                    </summary>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+  
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown text-right"
+            id="navbardrop"
+            data-toggle="dropdown"
+          >
+          <img class="img-profile rounded-circle border" [src]="profileImage" />
+          </a>
+          <!-- <span class="username">{{ username }}</span> -->
+  
+          <!-- Dropdown - User Information -->
+  
+          <div class="dropdown-menu">
+            <ul class="li-profile">
+              <li class="dropdown-item">
+                <a
+                  routerLink="/arms/employee"
+                  [queryParams]="{ id:'', profile: 'profile' }"
+                >
+                  <i class="fa fa-user fa-sm"></i>
+                  Profile
+                </a>
+              </li>
+              <li class="dropdown-item">
+                <a data-toggle="modal" data-target="#myModal">
+                  <i class="fa fa-lock fa-sm"></i>
+                  Change Password
+                </a>
+              </li>
+  
+              <li class="dropdown-item">
+                <a href="#">
+                  <i class="fa fa-sign-out fa-sm"></i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>

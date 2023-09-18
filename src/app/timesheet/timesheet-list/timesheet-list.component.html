@@ -1,0 +1,586 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header p-0"> <Span style="    line-height: 35px;
+      padding: 14px;"> Timesheet Management </Span> 
+      <ul class="nav nav-tabs justify-content-end float-right" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link {{timesheetactive}} {{timsheetshow}}"
+          (click)="divtimesheettab('div_timesheet')"
+          data-toggle="tab" style="cursor: pointer;"
+          >Apply Attendance / OT Requests
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link {{draftlistactive}} {{draftlistshow}}"
+          (click)="divtimesheettab('div_fromdraft')"
+          data-toggle="tab" style="cursor: pointer;"
+         
+          >Apply From Draft</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link {{timesheethistoryactive}} {{timesheethistoryshow}}"
+          (click)="divtimesheettab('div_apptimesheethistroy')"
+          data-toggle="tab" style="cursor: pointer;"
+          
+          >View History</a
+        >
+      </li>
+       <li class="nav-item">
+        <a
+          class="nav-link {{uploadtimesheetactive}} {{uploadtimesheetshow}}"
+          (click)="divtimesheettab('div_uploadtimesheethistroy')"
+          data-toggle="tab" style="cursor: pointer;"
+          >Time Sheet</a
+        >
+      </li>
+    </ul></div>
+    <div class="card-body p-0">
+      <div class="tab-content">
+        <div id="div_viewtimesheethistroy" class="container-fluid tab-pane">
+          <div class="row">
+            <div class="col-12">
+              <ul class="li_filter mt-2">
+                <li> <div class="form-group">
+                  <label>From </label>
+                  <input type="date" placeholder="" class="form-control">
+                 </div></li>
+                 <li> <div class="form-group">
+                  <label>To </label>
+                  <input type="date" placeholder="" class="form-control">
+                 </div></li>
+                 <li><div class="search-btn"><button title="Search" class="btn btn-primary"><i class="fa fa-search"></i></button></div> <div class="search-btn"><button type="Clear" title="Clear" class="btn btn-secondary"><i class="fa fa-times"></i></button></div>
+                  <div class="search-btn"><a href="pdf.html"  title="Download" target="_blank" class="btn btn-danger"><i class="fa fa-print"></i></a></div>
+                </li>
+              </ul>
+            </div>
+           
+          </div>
+</div>
+        <div id="div_uploadtimesheethistroy" class="container-fluid tab-pane  {{uploadtimesheetactive}} {{uploadtimesheetshow}}"  (click)="divtimesheettab('div_uploadtimesheethistroy')" id="div_uploadtimesheethistroy">
+         
+          <!-- <div class="row">
+            <div class="col-12 col-sm-8">
+              <span style="font-size: 13px; line-height: 55px;"> <span class="red">* Note:</span> Select the dropdown to change the File Process and Individual Attchment</span></div>
+            <div class="col-12 col-sm-4 p-2">
+              <div class="div-status w-100">
+              <select class="form-control">
+                <option> Select </option>
+                <option value="div_fileprocess">File Process</option>
+                <option value="div_individual">Individual Attachment</option>
+             </select>
+             </div>
+        </div>
+
+        <div class="div_fileprocess div_selecthide col-12">
+          
+          <div class="table-responsive mt-2">
+            <table class="table table-bordered table-hover custom-table">
+              <thead><tr>
+                <th>
+                  File Name
+                </th>
+                <th>
+                  Upload Date
+                </th>
+                <th>Status</th>
+                  <th>Duration (HH:MM:SS)</th>
+                </tr></thead>
+              <tbody>
+                
+                
+                  <tr>
+                    <td>20230816151837706</td>
+                    <td>16-08-2023 15:19:21</td>
+                    <td class="red">In Progress</td>
+                    <td>00:00:00</td>
+                  </tr>
+                  <tr>
+                    <td>20230816151837790</td>
+                    <td>16-08-2023 11:02:21</td>
+                    <td class="green">Completed</td>
+                    <td>00:37:00</td>
+                  </tr>
+                  <tr>
+                    <td>20230816151837190</td>
+                    <td>14-08-2023 11:50:21</td>
+                    <td class="green">Completed</td>
+                    <td>00:24:00</td>
+                  </tr>
+                  <tr>
+                    <td>20230816151837190</td>
+                    <td>13-08-2023 11:50:21</td>
+                    <td class="green">Completed</td>
+                    <td>00:24:00</td>
+                  </tr>
+                </tbody>
+                  </table>
+                  </div> 
+        </div>
+        <div class="div_individual div_selecthide col-12">
+          <div class="row">
+            <div class="col-12 ">
+<ul class="li_filter mb-0">
+            <li> <div class="form-group">
+              <label>From </label>
+              <input type="date" placeholder=""   class="form-control">
+             </div></li>
+             <li> <div class="form-group">
+              <label>To </label>
+              <input type="date" placeholder=""   class="form-control">
+             </div></li>
+             <li> <div class="form-group" style="width: 190px;float: left;">
+              <label>Employee OT Type</label>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">Normal (daily)
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">Weekly
+                </label>
+              </div>
+             </div></li>
+             <li class="d-none"> <div class="form-group" style="width: 190px;float: left;">
+              <label>Time Format</label>
+              <div class="form-check-inline" style="width: 50%; float: left;">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">100 Fmt
+                </label>
+              </div>
+              <div class="form-check-inline" style="width: 50%; float: left;">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">60 Fmt
+                </label>
+              </div>
+             </div></li>
+             <li> <div class="form-group">
+              <label>Sort By </label>
+              <select  class="form-control">
+                <option> Employee Code</option>
+                </select>
+             </div></li>
+             <li> <div class="form-group mt-4 pt-2">
+               
+              <select  class="form-control">
+                <option> Ascending</option>
+                </select>
+             </div></li>
+             <li><div  class="search-btn"><button  title="Search" class="btn btn-primary"><i class="fa fa-search"></i></button></div><div class="search-btn"><button type="Clear" title="Clear" class="btn btn-secondary"><i class="fa fa-times"></i></button></div>
+              <div class="search-btn"><a href="pdf.html"  title="Download" target="_blank" class="btn btn-danger"><i class="fa fa-print"></i></a></div>
+            </li>
+          </ul>
+            </div>
+
+              <div class="col-12">
+                <div class="table-responsive mt-2" style="height: 280px; overflow-y: auto;">
+                <table class="table table-bordered table-hover custom-table">
+                  <tbody>
+                    <tr>
+                        <th  class="py-2 m-0 text-center text-center" colspan="22"> <h1 style=" color: #bf1f3e;font-size:17px;font-weight: bold;"> Fomema SDN BHD</h1></th>
+                        </tr>
+                        <tr> 
+                                   <th  class="py-2 m-0 text-center text-center"  colspan="22"> <h3 style=" color: #0e7dc1;font-size: 15px;font-weight: bold;"> 
+                    Individual Attendance Report with Monthly Allowance</h3></th>
+                   </tr>
+                   <tr style="background-color: #dee2e6;"><th colspan="4"> <span style="color: #bf1f3e;">Emp Code :</span> <span>T001</span></th> <th colspan="4"><span style="color: #bf1f3e;">Emp Name </span>: <span>Employee</span></th> <th colspan="4"><span style="color: #bf1f3e;">Designation</span> : <span>Exective</span></th> <th colspan="4"><span style="color: #bf1f3e;">Dep :</span> <span>Human Capital Management</span></th> <th colspan="4" class="text-center"><span style="color: #bf1f3e;">Date</span> <span>22-08-2023</span></th>  <th colspan="4"><span style="color: #bf1f3e;">Period</span> <span>01-08-2023 to 22-08-2023</span></th></tr>
+                   <tr> <th colspan="2"></th> <th colspan="2"> Time</th> <th colspan="5"> Shift Details</th> <th colspan="5"> Over Time</th> <th colspan="7"> Allowance</th> <th rowspan="2">Rason</th></tr>
+                   <tr><th>Date</th> <th>Day</th> <th>In</th> <th>Out</th> <th>Shift</th> <th>Normal</th> <th>Late</th> <th  style="width: 60px;">Early Out</th> <th>Actual</th> <th>1.0</th> <th>1.5</th> <th>2.0</th> <th>3.0</th><th>Flat</th> <th>Atte</th> <th>Shift</th> <th>Meal</th> <th>Tran</th> <th style="width: 80px;">Allowance OT</th> <th>Allowance</th> <th>Health</th></tr>
+                   <tr><td>18-08-2023</td> <td>Fri</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>    </td></tr>
+                   <tr> <th colspan="23" style="background-color: #dee2e6;"> <span style="color: #bf1f3e;">Comments</span> : Update from request # : 286</th></tr>
+        
+                   <tr><td>19-08-2023</td> <td>Sat</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                    <tr><td>19-08-2023</td> <td>Sun</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                     <tr><td>20-08-2023</td> <td>Sun</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                      <tr><td>21-08-2023</td> <td>Mon</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                       <tr><td>22-08-2023</td> <td>Tue</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                       <tr> <th colspan="5"></th> <th colspan="9"></th> <th colspan="7"><span style="color: #bf1f3e;">Allowance</span></th> <th></th>  </tr>
+                       <tr style="color: #bf1f3e;font-weight: 500;"> <td colspan="6"></td> <td> Normal</td><td> Late</td><td>Early Out</td><td>Actual</td><td>OT 1.0</td><td>OT 1.5</td><td>OT 2.0</td><td>OT 3.0</td><td> Flat</td> <td> Atte</td><td>Shift</td> <td>Meal</td><td>Tran</td><td>Allowance <br>Other</td> <td> Allowance<br> Other</td><td>Health</td>  </tr>
+                       <tr style="font-weight: 500;"> <td colspan="6"> Total:</td> <td> 9:00</td><td>0:00</td><td>0:00</td><td>9:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td> <td> 0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td></tr>
+                      <tr> <th colspan="22">Monthly Allowance</th> </tr>
+                      <tr> <th colspan="4">Attd</th> <th colspan="3">Health</th> <th colspan="3">Trans</th> <th colspan="4">Meal</th> <th colspan="4">Allowance Other 1</th> <th colspan="4">Allowance Other 2</th>  </tr>
+                      <tr> <th colspan="4">0:00</th> <th colspan="3">0:00</th> <th colspan="3">0:00</th> <th colspan="4">0:00</th> <th colspan="4">0:00</th> <th colspan="4">0:00</th> </tr>
+                       <tr> <th colspan="5"></th> <th colspan="9"></th> <th colspan="7"><span style="color: #bf1f3e;">Allowance</span></th>  <td></td></tr>
+                       <tr style="color: #bf1f3e;font-weight: 500;"> <td colspan="5"></td> <td> Nrm</td><td> Actual</td><td>Late</td><td>Under</td><td>OT 1.0</td><td>OT 1.5</td><td>OT 2.0</td><td>OT 3.0</td><td> Flat</td> <td> Atte</td><td>Shift</td> <td>Meal</td><td>Tran</td><td>Allowance <br>Other</td> <td> Allowance<br> Other</td><td>Health</td> <td></td></tr>
+                       <tr style="font-weight: 500;"> <td colspan="5"> Total:</td> <td> 9:00</td><td>0:00</td><td>0:00</td><td>9:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td> <td> 0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td> <td></td></tr>
+                      </tbody>
+                      
+        </table> 
+        </div>
+              </div>
+            </div>
+         
+         </div>
+             </div> -->
+             <div class="row">
+              <div class="col-12 ">
+<ul class="li_filter mb-0 mt-2">
+              <li> <div class="form-group">
+                <label>From </label>
+                <input type="date" placeholder="" class="form-control">
+               </div></li>
+               <li> <div class="form-group">
+                <label>To </label>
+                <input type="date" placeholder="" class="form-control">
+               </div></li>
+                  
+               <li><div class="search-btn"><button title="Search" class="btn btn-primary"><i class="fa fa-search"></i></button></div><div class="search-btn"><button type="Clear" title="Clear" class="btn btn-secondary"><i class="fa fa-times"></i></button></div>
+                <div class="search-btn"><a href="pdf.html" title="Download" target="_blank" class="btn btn-danger"><i class="fa fa-print"></i></a></div>
+              </li>
+            </ul>
+              </div>
+
+                <div class="col-12">
+                  <div class="table-responsive mt-2" style="height: 310px; overflow-y: auto;">
+                  <table class="table table-bordered table-hover custom-table">
+                    <tbody>
+                      <tr>
+                          <th class="py-2 m-0 text-center text-center" colspan="22"> <h1 style=" color: #bf1f3e;font-size:17px;font-weight: bold;"> Fomema SDN BHD</h1></th>
+                          </tr>
+                          <tr> 
+                                     <th class="py-2 m-0 text-center text-center" colspan="22"> <h3 style=" color: #0e7dc1;font-size: 15px;font-weight: bold;"> 
+                      Individual Attendance Report with Monthly Allowance</h3></th>
+                     </tr>
+                     <tr style="background-color: #dee2e6;"><th colspan="4"> <span style="color: #bf1f3e; width: 100%; float: left;">Emp Code :</span> <span style=" width: 100%; float: left;">T001</span></th> <th colspan="4"><span style="color: #bf1f3e;  width: 100%; float: left;">Emp Name :</span> <span style=" width: 100%; float: left;">Employee</span></th> <th colspan="4"><span style="color: #bf1f3e;  width: 100%; float: left;">Designation :</span>  <span style=" width: 100%; float: left;">Exective</span></th> <th colspan="4"><span style="color: #bf1f3e;">Dep :</span> <span style=" width: 100%; float: left;">Human Capital Management</span></th> <th colspan="4" class="text-center"><span style="color: #bf1f3e; width: 100%; float: left;">Date :</span> <span style=" width: 100%; float: left;">22-08-2023</span></th>  <th colspan="4"><span style="color: #bf1f3e; width: 100%; float: left;">Period :</span> <span style=" width: 100%; float: left;">01-08-2023 to 22-08-2023</span></th></tr>
+                     <tr> <th colspan="2"></th> <th colspan="2"> Time</th> <th colspan="5"> Shift Details</th> <th colspan="5"> Over Time</th> <th colspan="7"> Allowance</th> <th rowspan="2">Reason</th></tr>
+                     <tr><th>Date</th> <th>Day</th> <th>In</th> <th>Out</th> <th>Shift</th> <th>Normal</th> <th>Late</th> <th style="width: 60px;">Early Out</th> <th>Actual</th> <th>1.0</th> <th>1.5</th> <th>2.0</th> <th>3.0</th><th>Flat</th> <th>Atte</th> <th>Shift</th> <th>Meal</th> <th>Tran</th> <th style="width: 80px;">Allowance OT</th> <th>Allowance</th> <th>Health</th></tr>
+                     <tr><td>18-08-2023</td> <td>Fri</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>    </td></tr>
+                     <tr> <th colspan="23" style="background-color: #dee2e6;"> <span style="color: #bf1f3e;">Comments</span> : Update from request # : 286</th></tr>
+          
+                     <tr><td>19-08-2023</td> <td>Sat</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                      <tr><td>19-08-2023</td> <td>Sun</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                       <tr><td>20-08-2023</td> <td>Sun</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                        <tr><td>21-08-2023</td> <td>Mon</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                         <tr><td>22-08-2023</td> <td>Tue</td> <td>8:30</td> <td>17:30</td> <td>HQ</td> <td>9:00</td> <td>0:00</td> <td>0:00</td> <td>9:00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td> <td>0.00</td><td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td> <td>0:00</td><td>RES</td></tr>
+                         <tr> <th colspan="5"></th> <th colspan="9"></th> <th colspan="7"><span style="color: #bf1f3e;">Allowance</span></th> <th></th>  </tr>
+                         <tr style="color: #bf1f3e;font-weight: 500;"> <td colspan="6"></td> <td> Normal</td><td> Late</td><td>Early Out</td><td>Actual</td><td>OT 1.0</td><td>OT 1.5</td><td>OT 2.0</td><td>OT 3.0</td><td> Flat</td> <td> Atte</td><td>Shift</td> <td>Meal</td><td>Tran</td><td>Allowance <br>Other</td> <td> Allowance<br> Other</td><td>Health</td>  </tr>
+                         <tr style="font-weight: 500;"> <td colspan="6"> Total:</td> <td> 9:00</td><td>0:00</td><td>0:00</td><td>9:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td> <td> 0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td></tr>
+                        <tr> <th colspan="22">Monthly Allowance</th> </tr>
+                        <tr> <th colspan="4">Attd</th> <th colspan="3">Health</th> <th colspan="3">Trans</th> <th colspan="4">Meal</th> <th colspan="4">Allowance Other 1</th> <th colspan="4">Allowance Other 2</th>  </tr>
+                        <tr> <th colspan="4">0:00</th> <th colspan="3">0:00</th> <th colspan="3">0:00</th> <th colspan="4">0:00</th> <th colspan="4">0:00</th> <th colspan="4">0:00</th> </tr>
+                         <tr> <th colspan="5"></th> <th colspan="9"></th> <th colspan="7"><span style="color: #bf1f3e;">Allowance</span></th>  <td></td></tr>
+                         <tr style="color: #bf1f3e;font-weight: 500;"> <td colspan="5"></td> <td> Nrm</td><td> Actual</td><td>Late</td><td>Under</td><td>OT 1.0</td><td>OT 1.5</td><td>OT 2.0</td><td>OT 3.0</td><td> Flat</td> <td> Atte</td><td>Shift</td> <td>Meal</td><td>Tran</td><td>Allowance <br>Other</td> <td> Allowance<br> Other</td><td>Health</td> <td></td></tr>
+                         <tr style="font-weight: 500;"> <td colspan="5"> Total:</td> <td> 9:00</td><td>0:00</td><td>0:00</td><td>9:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td><td>0:00</td> <td> 0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td><td>0:00</td> <td>0:00</td><td>0:00</td> <td></td></tr>
+                        </tbody>
+                        
+          </table> 
+          </div>
+          
+                </div>
+              </div>
+          </div>
+        <div id="div_timesheet" class="container-fluid tab-pane {{timesheetactive}} {{timsheetshow}}" (click)="divtimesheettab('div_timesheet')" id="div_timesheet">
+          
+          <div class="row">
+            <div class="col-12 my-2">
+              <div id="div_date" class="collapse">
+              <ul class="li_filter mb-0">
+                <li *ngFor="let item of status1Items">{{ item.name }}> <div class="form-group">
+                  <label>From </label>
+                  <input type="date" placeholder=""   class="form-control">
+                 </div></li>
+                 <li> <div class="form-group">
+                  <label>To </label>
+                  <input type="date" placeholder=""   class="form-control">
+                 </div></li>
+                 <li><div  class="search-btn"><button  title="Search" class="btn btn-primary"><i class="fa fa-search"></i></button></div><div class="search-btn"><button type="Clear" title="Clear" class="btn btn-secondary"><i class="fa fa-times"></i></button></div></li>
+              </ul></div>
+            </div>
+            <div class="col-12">
+              <!-- <div class="table-btn">
+              <a href="timesheet-list1.html" style="color: #fff">
+                <i class="fa fa-plus"></i></a
+              >
+            </div> -->
+              <div class="table-responsive mt-2">
+                <table class="table table-bordered table-hover custom-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="lightgray">
+                        <span style="width: 60px; float: left">Action</span>
+                      </th>
+                      <th class="lightpink" scope="col">
+                        <span style="width: 110px; float: left">Clock Date <i class="fa fa-filter" data-toggle="collapse" data-target="#div_date"></i></span>
+                      </th>
+                      <th class="lightpink" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Day </span>
+                      </th>
+                      <th class="lightblue"  scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Time In</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left">
+                          Time Out</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Shift</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Reason</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Lateness</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Early Out
+                         </span>
+                      </th>
+                      <th class="lightyellow" scope="col">
+                        <span style="width: 130px; float: left"> 
+                           OT Hourse (HH:MM)</span>
+                      </th>
+                      <th class="lightyellow" scope="col">
+                        <span style="width: 130px; float: left"> 
+                           Remarks</span>
+                      </th>
+                      
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of gridtimesheetlist">
+                          <td> 
+                            <span title="Edit" class="tbl-btn"><a routerLink="/fomema/timesheet" [queryParams]="{ id: item.id}" ><i class="fa fa-edit"></i></a></span>
+                          </td>
+                        <td>{{item.clock_date | date:'dd/MM/yyyy'}}</td>
+                        <td> {{item.clock_day}}</td>
+                        <td>{{item.actual_time_in | date:'hh:mm'}}</td>
+                        <td> {{item.actual_time_out | date:'hh:mm'}}</td>
+
+                        <td>{{item.shift_time_in | date:'hh:mm'}}</td>
+                        <td>{{item.reason}}</td>
+                        <td>{{item.lateness | date:'hh:mm'}}</td>
+                        <td> {{item.early_out | date:'hh:mm'}}</td>
+                        <td>{{item.requested_ot_hr | date:'hh:mm'}}</td>
+                        <td>{{item.remarks}}</td>
+
+                      </tr>
+                    
+                      
+                      </tbody>
+</table>              
+          </div>
+
+<!-- <div class="col-12 d-none">
+<div class="card-footer text-right mt-2 px-0"> 
+  <button class="btn btn-primary"> Update Selected Record</button>
+  <button class="btn btn-primary mx-2"> Batch Upadate In/Out</button>
+</div>
+</div> -->
+</div>
+           </div>
+        </div>
+        <div id="div_fromdraft" class="container-fluid tab-pane {{draftlistactive}} {{draftlistshow}}"  (click)="divtimesheettab('div_fromdraft')" id="div_fromdraft">
+         
+          <div class="row">
+            <div class="col-12 my-4">
+               
+
+              <div class="table-responsive mt-2">
+                <table class="table table-bordered table-hover custom-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="lightgray">
+                        <span style="width: 60px; float: left">Action</span>
+                      </th>
+                      <th class="lightpink" scope="col">
+                        <span style="width: 110px; float: left">Clock Date </span>
+                      </th>
+                      <th class="lightpink" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Day </span>
+                      </th>
+                      <th class="lightblue"  scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Time In</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left">
+                          Time Out</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Shift</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Reason</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Lateness</span>
+                      </th>
+                      <th class="lightblue" scope="col">
+                        <span style="width: 110px; float: left"> 
+                          Early Out
+                         </span>
+                      </th>
+                      <th class="lightyellow" scope="col">
+                        <span style="width: 130px; float: left"> 
+                           OT Hourse (HH:MM)</span>
+                      </th>
+                      <th class="lightyellow" scope="col">
+                        <span style="width: 130px; float: left"> 
+                           Remarks</span>
+                      </th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of gridtimesheetlist"  >
+                          <td> 
+                          <span title="Edit" class="tbl-btn"><a routerLink="/fomema/timesheet-draft" [queryParams]="{ id: item.id}" ><i class="fa fa-edit"></i></a></span>
+                          </td>
+                          <td>{{item.clock_date | date:'dd/MM/yyyy'}}</td>
+                          <td> {{item.clock_day}}</td>
+                          <td>{{item.actual_time_in | date:'hh:mm'}}</td>
+                          <td> {{item.actual_time_out | date:'hh:mm'}}</td>
+                          <td>{{item.shift_time_in | date:'hh:mm'}}</td>
+                          <td>{{item.reason}}</td>
+                          <td>{{item.lateness | date:'hh:mm'}}</td>
+                          <td> {{item.early_out | date:'hh:mm'}}</td>
+                          <td>{{item.requested_ot_hr | date:'hh:mm'}}</td>
+                          <td>{{item.remarks}}</td>
+                       </tr> </tbody>
+                      </table>
+            </div>
+            <ul class="pagination pagination-sm test-right mt-3 d-none" >
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+
+          </div>
+        </div>
+        </div>
+        <div id="div_apptimesheethistroy" class="container-fluid tab-pane {{timesheethistoryactive}} {{timesheethistoryshow}}" (click)="divtimesheettab('div_apptimesheethistroy')" id="div_apptimesheethistroy">
+          
+          <div class="row my-2">
+
+              <div class="col-12">
+                
+                   
+                    <i class="p-2 w-100 float-left" style="font-size: 12px; font-weight: 500;">All Timings in HH:MM</i>
+                <div class="table-responsive mt-2">
+                  <table class="table table-bordered table-hover custom-table">
+                    <thead>
+                      <tr>
+                         <th class="lightgray"></th>
+                        <th class="lightpink" scope="col" >
+                          <span style="width: 75px; float: left">Clock Date </span>
+                        </th>
+                        <th class="lightpink" scope="col">
+                          <span style="width: 50px; float: left"> 
+                            Day </span>
+                        </th>
+                        <th class="lightpink" scope="col">
+                          <span style="width: 110px; float: left"> 
+                            Actual Time In</span>
+                        </th>
+                        <th class="lightpink" scope="col">
+                          <span style="width: 110px; float: left">
+                            Actual Time Out</span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 110px; float: left"> 
+                            Request Time In</span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 120px; float: left"> 
+                            Request Time Out</span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 110px; float: left"> 
+                            Request OT Hr</span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 60px; float: left"> 
+                            Lateness
+                           </span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 60px; float: left"> 
+                            Early Out</span>
+                        </th>
+                        <th class="lightblue" scope="col">
+                          <span style="width: 130px; float: left"> 
+                            Remarks</span>
+                        </th>
+                        <th class="lightyellow" scope="col">
+                          <span style="width: 50px; float: left"> 
+                            Cancel</span>
+                        </th>
+                        <th class="lightyellow" scope="col">
+                          <span style="width: 130px; float: left"> 
+                            Status</span>
+                        </th>
+                        <th class="lightyellow" scope="col">
+                          <span style="width: 130px; float: left"> 
+                            Approve Up To</span>
+                        </th>
+                        <th class="lightyellow" scope="col">
+                          <span style="width: 130px; float: left"> 
+                            Officer Comments</span>
+                        </th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                          <tr *ngFor="let item of gridtimesheetlist" >
+                              
+                          <td>  
+                            <button class="btn btn-outline-danger" style="padding: 3px 8px;">
+                              <i class="fa fa-times-circle"></i>
+                            </button>
+                            <td>{{item.clock_date | date:'dd/MM/yyyy'}}</td>
+
+                            <td> {{item.clock_day}}</td>
+
+                            <td>{{item.actual_time_in | date:'hh:mm'}}</td>
+
+                            <td> {{item.actual_time_out | date:'hh:mm'}}</td>
+
+                            <td>{{item.requested_time_in| date:'hh:mm'}}</td>
+
+                            <td>{{item.requested_time_out | date:'hh:mm'}}</td>
+
+                            <td>{{item.requested_ot_hr | date:'hh:mm'}}</td>
+
+                            <td>{{item.lateness | date:'hh:mm'}}</td>
+
+                            <td> {{item.early_out | date:'hh:mm'}}</td>
+
+                            <td>{{item.remarks}}</td>
+
+                            <td>{{item.cancel}}</td>
+
+                            <td>{{item.status}}</td>
+
+                            <td>{{item.approve_up_to}}</td>
+
+                            <td>{{item.officer_comments}}</td>
+                        </tr>
+                       
+                        
+                        </tbody>
+  </table>             
+  </div>   
+                 
+                            
+    </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ 
+  
+  </div>

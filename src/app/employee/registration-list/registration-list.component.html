@@ -1,0 +1,98 @@
+<div class="container-fluid" id="content">
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="card"> 
+                 <div class="card-header">
+                 Employee Registration
+                        
+                 </div>
+                <div class="card-body">
+                  <div class="container-fluid p-0"> 
+                  <div class="row">
+                  <div class="col-12">
+                    <div class="table-btn">
+                    <a href="/#/fomema/employee" style="color: #fff">
+                      <i class="fa fa-plus"></i></a
+                    >
+                  </div>
+                
+      
+      <div class="table-responsive mt-2">
+        <table class="table table-bordered table-hover custom-table">
+            <thead>
+                <tr>
+                    <th scope="col"><span style="width: 90px; float: left;">Action</span></th>
+                    <th scope="col"><span style="width: 110px; float: left;">Emp-code <i class="fa fa-filter" data-toggle="collapse" data-target="#demodate"></i></span></th>
+                    <th scope="col"><span style="width: 100px; float: left;"> Employee Name</span></th>
+                    <th scope="col"><span style="width: 100px; float: left;">Short Name</span></th>
+                  
+                      <th  scope="col"><span style="width: 130px; float: left;">Gender </span></th>
+                      <th  scope="col"><span style="width: 170px; float: left;">Department </span></th>
+                      <th  scope="col"><span style="width: 170px; float: left;">Section </span></th>
+
+                      <th  scope="col"><span style="width: 170px; float: left;">Designation </span></th>
+
+                      
+                      <th  scope="col"><span style="width: 170px; float: left;">Email Address</span></th>
+
+                      <th  scope="col"><span style="width: 170px; float: left;"> Joint Date</span></th>
+
+                      <th  scope="col"><span style="width: 170px; float: left;"> Resign Date</span></th>
+
+ 
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of gridemployeelist">
+              <td>
+                <span class="tbl-btn" title="Edit"><a routerLink="/fomema/employee/" [queryParams]="{ id: item.id}" > <i class="fa fa-edit"></i> </a>
+              </span>
+              <span class="tbl-btn" title="View"><a routerLink="/fomema/employee/" [queryParams]="{ id: item.id,view:'view'}">
+             <i class="fa fa-eye"></i>
+              </a>
+             </span>
+              </td>
+                <td>{{item.employeeCode}}</td>
+                <td>
+                  {{item.fullName}}</td>
+                <td>
+                  {{item.shortName}}</td>              
+                 
+                  <td>{{item.gendername}}</td>
+                  <td>{{item.departmentname}}</td>
+                  <td>{{item.sectionname}}</td> 
+                  <td>
+                    {{item.designationname}}</td>
+               
+                <td>{{item.emailAddress}}</td>
+                <td> {{item.joinDate | date:'dd/MM/yyyy'}} </td>
+                <td> {{item.resignDate | date:'dd/MM/yyyy'}} </td>
+                   
+            </tr>
+            
+
+          </tbody>
+            <!--bindings={
+      "ng-reflect-ng-for-of": "[object Object],[object Object"
+    }-->
+        </table>
+    </div>
+    
+    <!-- <ul class="pagination pagination-sm test-right mt-2 float-right">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul> -->
+      </div>
+                </div>      
+                      
+        </div>
+   
+        </div>
+           
+           </div>
+     </div>
+    </div>
+  </div>

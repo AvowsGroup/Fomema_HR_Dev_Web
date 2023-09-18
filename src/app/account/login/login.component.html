@@ -1,0 +1,130 @@
+<div class="login-block">
+  <form [formGroup]="loginFrom" (ngSubmit)="onLoginSubmit()">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-12 col-md-12 p-0">
+              <div class="newbanner-sec">
+                <div class="newlogin-logo"> <img src="../assets/img/logo.png"></div>
+               </div>
+               <div class="login-svgbg">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="77.114 -295 28.942 614" enable-background="new -7.114 -295 28.942 614"
+                xml:space="preserve">
+             <g>
+               <path fill="#bf1f3e" d="M-7.085,170.612C-8,17.615,13,17.489,12.086-135.508C11.628-212.006,6.15-250.225,0.671-288.442l17.5-0.104
+                 l3.657,611.989l-17.499,0.104C-1.149,285.329-6.628,247.11-7.085,170.612z"/>
+             </g>
+             </svg>
+             
+                   <div class="login-bg">
+                     
+
+                      <div class="newlogin-sec">
+                          <div class="W-100 mb-3">
+                              <label for="username" style="font-size: 13px; color: #fff;">Username</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="username"><i class="fa fa-user-o" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input type="text" formControlName="username" class="form-control" name="username" id="username" value="admin">
+                                
+                                 <div class="invalid-feedback" style="width: 100%;">
+                                  Your username is required.
+                                </div>
+                              </div>
+                              
+                          </div>
+                          <div class="w-100 mb-4">
+                              <label for="exampleInputEmail1" style="font-size: 13px; color: #fff;">Password</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="username"><i class="fa fa-key" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input type="password" formControlName="password" name="password" class="form-control" id="password" value="admin123">  
+                                <i class="fa fa-eye pasword-hide"></i>                        <div class="invalid-feedback" style="width: 100%;">
+                                  Your username is required.
+                                </div>
+                              </div>
+                              
+                          </div>
+                          <div class="w-100">
+                              <button class="btn btn-danger btn-block my-2"  style="background: #fff; color:#bf1f3e;">Sign in</button>
+                          
+                              <div class="sign-up">
+                                  <a href="#" style=" color: #fff;">Forgot password?</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </form>
+</div>
+<style>
+  .login-svgbg{
+ 
+ position: absolute;
+ padding: 0;
+ top: -20px;
+ margin-right: 0;
+ right: 0;
+ width: 460px;
+ height: calc(100vh + 20px);
+
+ }
+ .login-svgbg>svg {
+ width: 100%;
+ height: 100%;
+ transform: rotate(0deg);
+}
+.red-bg{
+ fill: #e91b22;
+}
+   .newbanner-sec {
+       width: 100%;
+   float: left;
+   height: 100vh;
+ background:url(../assets/img/banner-2.png) ;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.newbanner-sec>img{
+   width: 100%;
+}
+.login-bgnew {
+   padding: 10px 20px 42px 15px;
+   position: absolute;
+   background: #d10202;
+   right: 0px;
+   border-radius: 10px;
+   top: 0px;
+
+}
+.login-bg {
+ position: absolute;
+ top: 0;
+ background: #bf1f3e;
+ right: 0;
+ width: 302px;
+ padding: 148px 18px 18px 18px;
+ height: 100%;
+}
+.newlogin-logo>img{
+   width: 100%;
+}
+.newlogin-logo{
+   width:250px;
+   float: left;
+   padding: 10px 10px 10px 10px;
+}
+.pasword-hide{
+                                   position: absolute;
+                                   right: 8px;
+                                   top: 13px;
+                                   color: #747474;
+                               }
+</style>

@@ -1,0 +1,669 @@
+<div class="container-fluid" id="content">
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="card"> 
+                 <div class="card-header p-0">
+                 <span style="line-height: 20px; padding:10px 10px; float: left;">Employee Registration</span>
+                        <ul class="nav nav-tabs justify-content-end float-right">
+                            <li class="nav-item">
+                              <a class="nav-link {{empactive}} {{empshow}}" (click)="divemployeetab('div_employeedetails')" data-toggle="tab" style="cursor: pointer;" > Employee  Details</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link {{businessactive}} {{businessshow}}" (click)="divemployeetab('div_personaldetails')" data-toggle="tab" style="cursor: pointer;">New Employee Business Details</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link {{workingactive}} {{workingshow}}" (click)="divemployeetab('div_etms')" data-toggle="tab" style="cursor: pointer;">Working Hours Details</a>
+                            </li>
+                             <li class="nav-item">
+                              <a class="nav-link {{approvalactive}} {{approvalshow}}" (click)="divemployeetab('div_personalleave')" data-toggle="tab" style="cursor: pointer;">Approval Setting</a>
+                            </li>
+                           
+                          
+                          </ul>     
+                 </div>
+                <div class="card-body px-0"> 
+ 
+
+                             <!-- Tab panes -->
+                             <div class="tab-content">
+                              <div class="tab-pane container-fluid {{workingactive}} {{workingshow}}" (click)="divemployeetab('div_etms')" id="div_etms">
+                                <form [formGroup]="formemployee" (ngSubmit)="onAddSubmit()">
+                                    <input type="hidden" value="{{Id}}" formControlName="id" />
+                                    <div class="row">
+                                  <div class="col-12">
+                                    <div class="sub-cards">
+                                      <div class="sub-card-header">OT / Branch Details</div>
+                                      <div class="sub-card-body">
+                                        <div class="row">
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                              <div class="form-group">
+                                                  <label> OT Type <span class="red">*</span></label>
+                                                  <select class="form-control"  formControlName="otType">
+                                                    <option >Select OT Type</option>
+                                                    <option *ngFor="let item of ddlOtType" value="{{ item.id }}">
+                                                      {{ item.name }}
+                                                    </option>
+                                                    </select>                                          </div>
+                                          </div>
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="form-group">
+                                                <label> Flat / Hourly <span class="red">*</span></label>
+                                           <input type="text"  class="form-control" formControlName="hourly" >
+                                            </div>
+                                        </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                 
+                                    <div class="sub-cards">
+                                      <div class="sub-card-header">Shift Details</div>
+                                      <div class="sub-card-body">
+                                        <div class="row">
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                              <div class="form-group">
+                                                  <label> Working Hours / Shift
+                                                    <span class="red">*</span></label>
+                                                    <select class="form-control" formControlName="workingHourseperShift">
+                                                        <option >Select Working Hours</option>
+                                                        <option *ngFor="let item of ddlWorkingHours" value="{{ item.id }}">
+                                                          {{ item.name }}
+                                                        </option>
+                                                      </select>
+                                              </div>
+                                          </div>
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="form-group">
+                                                <label> Rest Day <span class="red">*</span></label>
+                                                <select class="form-control" formControlName="restDay" > 
+                                                    <option >Select Rest Day</option>
+                                                    <option *ngFor="let item of ddlRestday" value="{{ item.id }}">
+                                                      {{ item.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                          </div>
+                                      </div>
+                                      <div class="sub-card-body d-none" >
+                                        <div class="row">
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="sub-box">
+                                              <div class="sub-boxheader">
+                                                <input type="checkbox"> Duty Roster/Group
+
+                                              </div>
+                                              <div class="sub-boxbody pt-2">
+                                                <select class="form-control"disabled>
+                                                  <option>
+                                                    | None
+                                                  </option>
+                                                </select>
+                                                 <select class="form-control" disabled> 
+                                                  <option>None</option>
+                                                      </select>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="sub-box">
+                                              <div class="sub-boxheader">
+                                                <input type="checkbox"> AutoShift
+
+                                              </div>
+                                              <div class="sub-boxbody pt-2">
+                                                <select class="form-control" disabled>
+                                                  <option> Select</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                          
+                                          </div>
+                                          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="sub-box">
+                                              <div class="sub-boxheader">
+                                                <input type="checkbox"> Schidule
+
+                                              </div>
+                                              <div class="sub-boxbody">
+                                                 
+                                              </div>
+                                            </div>
+                                          
+                                          </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-12 mt-3 px-0"> 
+                                    <div class="card-footer">
+                                      <div class="text-right">
+                                          <button class="btn btn-primary mr-1" *ngIf="enablebutton"> Save</button>
+                                          <a class="btn btn-danger" (click)="goback()"> Cancel</a>
+                                          
+                                                                              </div>
+                                     </div>
+                                    </div>
+                                </div>
+</form>
+                                
+                              </div>
+                               <div class="tab-pane container-fluid {{empactive}} {{empshow}}" (click)="divemployeetab('div_employeedetails')" id="div_employeedetails">
+                                <form [formGroup]="formemployee" (ngSubmit)="onAddSubmit()">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2">
+                                      <div class="profile-img">                                      <div class="circle">
+                                        <img class="profile-pic"   [src]="srcLogo">
+                                 
+                                      </div>
+                                      <div class="p-image">
+                                                                          
+                                            <!-- <input type="file" class="custom-file-input" id="customFile" name="filename" formControlName="passportAttachment">
+                                            <label class="custom-file-label" for="customFile">Choose file</label> -->
+                                            <input
+                       
+                                            hidden
+                                            type="file"
+                                            #docoffer
+                                          
+                                            (change)="Uploadoffer($event)"
+                                          />
+                                          <button
+                                            type="button"
+                                            class="btn btn-light border w-75 p-1 float-left text-left upload-img"
+                                            (click)="docoffer.click()"
+                                          >
+                                          <i class="fa fa-camera upload-button"></i>    
+                                            
+                                          </button>
+                                        
+                                      </div>
+                                    </div>
+                                    <span class="text-left text-danger w-100 float-left mt-2" style="font-size: 11px;">Note: Upload file should not exceed 5 MB
+                                    </span>
+                                  </div>
+<div class="col-12 col-sm-12 col-md-10 col-lg-10">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <label> Employee Code</label>
+                                            <input type="text" placeholder="" class="form-control" formControlName="employeeCode">
+                                        </div>
+                                    </div>  
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <label> Full Name</label>
+                                            <input type="text" placeholder="" class="form-control"  formControlName="fullName">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                      <div class="form-group">
+                                          <label> Short Name</label>
+                                          <input type="text" placeholder="" class="form-control" formControlName="shortName">
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label> Gender</label>
+                                        <select class="form-control" formControlName="gender">
+                                            <option >Select Gender</option>
+                                            <option *ngFor="let item of ddlGender" value="{{ item.id }}">
+                                              {{ item.name }}
+                                            </option>    
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                  <div class="form-group">
+                                      <label> Marital Status
+                                      </label>
+                                      <select class="form-control" formControlName="maritalStatus">
+                                        <option >Select Marital Status</option>
+                                        <option *ngFor="let item of ddlmaritalStatus" value="{{ item.id }}">
+                                          {{ item.name }}
+                                        </option>    
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group" >
+                                    <label> Biometric ID (ID Card – Attendance)
+                                    </label>
+                                    <input type="" placeholder="" class="form-control" formControlName="biometricId">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                  <label>Join Date
+                                      </label>
+                                      <input type="date" placeholder="" class="form-control" formControlName="joinDate">
+                                  </div>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                  <label>Resign Date</label>
+                                  <input type="date" placeholder="" class="form-control" formControlName="resignDate">
+                              </div>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                  <label>Confirmation Date</label>
+                                  <input type="date" placeholder="" class="form-control" formControlName="confirmationDate">
+                              </div>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                              <div class="form-group">
+                                  <label>Probation </label>
+                                  <select class="form-control" formControlName="probation">
+                                    <option >Select Probation</option>
+                                                <option *ngFor="let item of ddlProbation" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>    
+                                </select>                            
+                                      </div>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="text" placeholder="" class="form-control" formControlName="emailAddress">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+                            <div class="form-group" >
+                                <label>Mobile No</label>
+                                <input type="text" placeholder="" class="form-control" formControlName="mobileNo">
+                            </div>
+                        </div>
+  </div>
+</div>
+                                    
+                                  
+                                   
+                                   
+                                  
+                              
+                                    
+                                    
+                                   
+                                    
+                                  
+                                    <div class="col-12 col-sm-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label>Reason of Resignation</label>
+                                            <textarea  class="form-control" formControlName="reasonResignation">
+                                              </textarea>
+                                        </div>
+                                        <span class="text-left text-danger" style="font-size: 11px;">Note: Max 500 Characters Allowed 
+                                        </span>
+                                    </div>
+                                    <div class="col-12 mt-3 px-0"> 
+                                        <div class="card-footer">
+                                          <div class="text-right">
+                                              <button class="btn btn-primary mr-1" *ngIf="enablebutton"> Save</button>
+                                              <a class="btn btn-danger" (click)="goback()"> Cancel</a>
+                                              
+                                                                                  </div>
+                                         </div>
+                                        </div>
+                                   </div></form>
+                               </div>
+                               <div class="tab-pane container-fluid {{approvalactive}} {{approvalshow}}" (click)="divemployeetab('div_personalleave')" id="div_personalleave">
+                                <form [formGroup]="formemployee" (ngSubmit)="onAddSubmit()">
+                                    <input type="hidden" value="{{Id}}" formControlName="id" />
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="sub-box mb-3 pb-2" style="height: auto;">
+                                                                          <div class="sub-boxheader mb-2"> Timesheet Manage</div>
+                                                                          <div class="sub-boxbody">
+                                                                            <div class="container-fluid">
+                                                                              
+                                                                      <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                          <div class="form-group">
+                                                                              <label>First Level Approval</label>
+                                                                              <select class="form-control" formControlName="firstLevelApproval"> 
+                                                                                <option >Select Approval</option>
+                                        <option *ngFor="let item of ddlemployee" value="{{ item.id }}">
+                                          {{ item.name }}
+                                        </option>  
+                                                                              </select>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                        <div class="form-group">
+                                                                            <label>Second Level Approval</label>
+                                                                            <select class="form-control" formControlName="secondLevelApproval"> 
+                                                                                <option >Select Approval</option>
+                                        <option *ngFor="let item of ddlemployee" value="{{ item.id }}">
+                                          {{ item.name }}
+                                        </option>  
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                      <div class="form-group">
+                                                                          <label>Final Level Approval</label>
+                                                                          <select class="form-control" formControlName="thirdLevelApproval"> 
+                                                                            <option >Select Approval</option>
+                                                                            <option *ngFor="let item of ddlemployee" value="{{ item.id }}">
+                                                                              {{ item.name }}
+                                                                            </option>  
+                                                                          </select>
+                                                                      </div>
+                                                                  </div>
+                                                                      </div>
+                                                                    </div>
+
+                                                                  </div>
+                                                                </div>
+                                                                  </div>
+                                  
+                                                                  <div class="col-12">
+                                                                  <div class="sub-box pb-3" style="height: auto;">
+                                                                    <div class="sub-boxheader mb-2"> Leave Manage</div>
+                                                                    <div class="sub-boxbody">
+                                                                      <div class="container-fluid">
+                                                                        
+                                                                <div class="row">
+                                                                  <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <label>First Level Approval</label>
+                                                                        <select class="form-control"> 
+                                                                          <option> Select First Level Approval</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                  <div class="form-group">
+                                                                      <label>Second Level Approval</label>
+                                                                      <select class="form-control"> 
+                                                                        <option> Select First Level Approval</option>
+                                                                      </select>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="col-12 col-sm-12 col-md-3 col-lg-3 d-none">
+                                                                <div class="form-group">
+                                                                    <label>Final Level Approval</label>
+                                                                    <select class="form-control"> 
+                                                                      <option> Select First Level Approval</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            
+
+                                  <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-2  d-none">
+                                    <div class="form-group">
+                                        <label>Backup officer</label>
+                                        <select class="form-control"> 
+                                          <option> Select Leave Approval</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                                                  </div>
+                                                                  </div>
+                                                                  </div>
+                                                                  </div>
+                               
+                                                                </div>
+                                                                <div class="col-12">
+                                                                  <div class="sub-box my-4 pb-3" style="height: auto;">
+                                                                    <div class="sub-boxheader mb-2"> Claims</div>
+                                                                    <div class="sub-boxbody">
+                                                                      <div class="container-fluid">
+                                                                        
+                                                                <div class="row">
+                                                                  <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <label>First Level Approval</label>
+                                                                        <select class="form-control"> 
+                                                                          <option> Select First Level Approval</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                  <div class="form-group">
+                                                                      <label>Second Level Approval</label>
+                                                                      <select class="form-control"> 
+                                                                        <option> Select First Level Approval</option>
+                                                                      </select>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <label>Final Level Approval</label>
+                                                                    <select class="form-control"> 
+                                                                      <option> Select First Level Approval</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            
+
+                                  <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-2  d-none">
+                                    <div class="form-group">
+                                        <label>Backup officer</label>
+                                        <select class="form-control"> 
+                                          <option> Select Leave Approval</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                                                  </div>
+                                                                  </div>
+                                                                  </div>
+                                                                  </div>
+                               
+                                                                </div>
+                           
+                                  <div class="col-12 d-none">
+                                    <div class="table-btn">
+                                      <a href="addleave-list.html" style="color: #fff">
+                                        <i class="fa fa-plus"></i></a>
+                                    </div>
+                                    <table class="table table-bordered table-hover custom-table"> <thead>
+                                      <tr><th scope="col" style="width:5%;"><span style="width: 70px; float: left;">Action</span></th>  <th scope="col" style="width: 30%;"><span style="width: 110px; float: left;">Leave type</span></th> <th scope="col"><span style="width: 110px; float: left;"></span></th> </tr></thead>
+                                    <tbody>
+                                      <tr>
+                                        <td> <span title="Delete" class="tbl-dangerbtn"> <i class="fa fa-trash"></i></span> 
+                                            </td>
+                                        <td><select class="form-control">  
+                                        <option>Annual Leave</option>
+                                        <option>Accumulation of Annual Leave</option>
+                                        <option>Cancellation of Leave</option>
+                                        <option>Emergency Leave</option>
+                                        <option>Unpaid Leave</option>
+                                        <option>Maternity Leave</option>
+                                        <option>Paternity Leave</option>
+                                        <option>Special Leave / Compassionate Leave</option>
+                                        <option>Examination Leave</option>
+                                        <option>Sick Leave</option>
+                                        <option>Hospitalization Leave</option>
+                                        <option>Prolonged Illness Leave</option>
+                                        <option> Pilgrimage Leave for Muslim Employees</option>
+                                       
+                                                                            </select></td>
+                                        <td> <input type="text" class="form-control" value="5"></td>
+                                      </tr>
+                                      <tr>
+                                        <td> <span title="Delete" class="tbl-dangerbtn"> <i class="fa fa-trash"></i></span> 
+                                           </td>
+                                        <td><select class="form-control">  
+                                          <option>Accumulation of Annual Leave</option>
+                                        <option>Annual Leave</option>
+                                        <option>Accumulation of Annual Leave</option>
+                                        <option>Cancellation of Leave</option>
+                                        <option>Emergency Leave</option>
+                                        <option>Unpaid Leave</option>
+                                        <option>Maternity Leave</option>
+                                        <option>Paternity Leave</option>
+                                        <option>Special Leave / Compassionate Leave</option>
+                                        <option>Examination Leave</option>
+                                        <option>Sick Leave</option>
+                                        <option>Hospitalization Leave</option>
+                                        <option>Prolonged Illness Leave</option>
+                                        <option> Pilgrimage Leave for Muslim Employees</option>
+                                       
+                                                                            </select></td>
+                                        <td> <input type="text" class="form-control" value="10"></td>
+                                      </tr>
+                                      <tr>
+                                        <td> <span title="Delete" class="tbl-dangerbtn"> <i class="fa fa-trash"></i></span> 
+                                          
+                                           </td>
+                                        <td><select class="form-control">   <option>Select Leave Type</option>
+
+                                          <option>Accumulation of Annual Leave</option>
+                                        <option>Annual Leave</option>
+                                        <option>Accumulation of Annual Leave</option>
+                                        <option>Cancellation of Leave</option>
+                                        <option>Emergency Leave</option>
+                                        <option>Unpaid Leave</option>
+                                        <option>Maternity Leave</option>
+                                        <option>Paternity Leave</option>
+                                        <option>Special Leave / Compassionate Leave</option>
+                                        <option>Examination Leave</option>
+                                        <option>Sick Leave</option>
+                                        <option>Hospitalization Leave</option>
+                                        <option>Prolonged Illness Leave</option>
+                                        <option> Pilgrimage Leave for Muslim Employees</option>
+                                       
+                                                                            </select></td>
+                                        <td> <input type="text" class="form-control"></td>
+                                      </tr>
+                                    </tbody></table>
+                                  </div>
+                                  <div class="col-12 mt-3 px-0"> 
+                                    <div class="card-footer">
+                                      <div class="text-right">
+                                          <button class="btn btn-primary mr-1" *ngIf="enablebutton"> Save</button>
+                                          <a class="btn btn-danger" (click)="goback()"> Cancel</a>
+                                          
+                                                                              </div>
+                                     </div>
+                                    </div>
+                              </div></form>
+                              
+                                </div>
+                               <div class="tab-pane container-fluid {{businessactive}} {{businessshow}}" (click)="divemployeetab('div_personaldetails')" id="div_personaldetails">
+                                <form [formGroup]="formemployee" (ngSubmit)="onAddSubmit()">
+                                    <input type="hidden" value="{{Id}}" formControlName="id" />
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Department</label>
+                                            <select class="form-control" formControlName="department">
+                                                <option >Select Department</option>
+                                                <option *ngFor="let item of ddlDepartment" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>
+                                          </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Section</label>
+                                            <select class="form-control" formControlName="section">
+                                                <option >Select Section</option>
+                                                <option *ngFor="let item of ddlSection" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Designation</label>
+                                            <select class="form-control" formControlName="designation">
+                                                <option >Select Designation</option>
+                                                <option *ngFor="let item of ddlDesignation" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Holiday Group</label>
+                                            <select class="form-control" formControlName="holidayGroup">
+                                                <option >Select Holiday</option>
+                                                <option *ngFor="let item of ddlholiday" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Hours of Worked / Day</label>
+                                            <input type="text" placeholder="" class="form-control" formControlName="hoursWorkedDay">
+
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label> Day of Worked / Week</label>
+                                            <input type="text" placeholder="" class="form-control" formControlName="dayWorkedWeek">
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label>Hours of Worked / Year</label>
+                                            <input type="text" placeholder="" class="form-control" formControlName="hoursWorkedyear">
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label>Job Grade</label>
+                                            <select class="form-control" formControlName="jobGrade">
+                                                <option >Select Job Grade</option>
+                                                <option *ngFor="let item of ddljobGrade" value="{{ item.id }}">
+                                                  {{ item.name }}
+                                                </option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="form-group">
+                                            <label>Leave Entitlement</label>
+                                            <select class="form-control">
+                                                <option>Select Leave Entitlement</option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                      <div class="form-group">
+                                          <label>Claim limit</label>
+                                          <input type="text" placeholder="" class="form-control">
+
+                                       </div>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Claim group</label>
+                                        <input type="text" placeholder="" class="form-control">
+
+                                     </div>
+                                </div>
+                                <div class="col-12 mt-3 px-0"> 
+                                    <div class="card-footer">
+                                      <div class="text-right">
+                                          <button class="btn btn-primary mr-1" *ngIf="enablebutton"> Save</button>
+                                          <a class="btn btn-danger" (click)="goback()"> Cancel</a>
+                                          
+                                                                              </div>
+                                     </div>
+                                    </div>
+                                     </div></form>
+                            </div>
+                              </div>
+                           
+        </div>
+        <!-- <div class="card-footer"> 
+            <div  class="text-right"> 
+                     <button  type="submit" class="btn btn-primary mr-1">Save</button> 
+                     <a href="employee-list.html"  type="submit"  class="btn btn-danger">Cancel</a></div></div> -->
+        </div>
+           
+           </div>
+     </div>
+    </div>
+    
+       

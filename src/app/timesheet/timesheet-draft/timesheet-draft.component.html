@@ -1,0 +1,154 @@
+<div class="container-fluid" id="content">    
+  <div class="row">
+      <div class="col-12 mt-3">
+        <div class="card">
+          <div class="card-header">
+            Timesheet Management
+                      </div>
+          <div class="card-body">
+            <form [formGroup]="formtimesheet" (ngSubmit)="onAddSubmit()">
+              <input type="hidden" value="{{id}}" formControlName="id" />
+            <div class="row">
+              <div class="col-12">
+                  <div class="subtitle-bg mt-0 mb-2">My Current Record <b>(01 -08-2023) </b></div></div>
+              <div class="col-12">
+              </div>
+              
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Shift Time in</label>
+                  <input class="form-control" formControlName="shift_time_in"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Shift Time Out</label>
+                  <input class="form-control"  formControlName="shift_time_out"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Actual Time In</label>
+                  <input class="form-control" formControlName="actual_time_in"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Actual Time Out</label>
+                  <input class="form-control"  formControlName="actual_time_out"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Actual OT Hr</label>
+                  <input class="form-control"  formControlName="actual_ot_hr"> 
+                  </div>
+              </div>
+              
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Lateness</label>
+                  <input class="form-control"  formControlName="lateness"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Early Out</label>
+                  <input class="form-control"  formControlName="earlyout"> 
+                  </div>
+              </div>
+              <div class="col-12 col-xs-12 col-sm-3">
+                <div class="form-group">
+                  <label>Status</label>
+                  <input type="text" class="form-control" formControlName="status">
+                   </div>
+              </div>
+             </div>
+            </form>
+
+             <form [formGroup]="formtimesheet" (ngSubmit)="onAddSubmit()">
+             <div class="row mt-2"> 
+              <div class="col-12"><div class="subtitle-bg mb-2"> My New Record</div></div>
+                <input type="hidden" value="{{id}}" formControlName="id" />
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Requested Time in</label
+                  >
+                  <input type="time"  class="form-control" formControlName="requested_time_in"> 
+                  </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Requested Time out</label>
+                  <input type="time"   class="form-control" formControlName="requested_time_out">
+                   </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Requested OT Hr</label>
+                  <input type="time" class="form-control" formControlName="requested_ot_hr">
+                   </div>
+              </div>
+              <div class="col- col-sm-3">
+                <div class="form-group">
+                  <label>Lateness</label>
+                  <input type="time" class="form-control" formControlName="lateness">
+                   </div>
+              </div>
+             
+              <div class="col- col-sm-3">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Early Out</label>
+                      <input type="time" class="form-control" formControlName="earlyout">
+                       </div>
+                       <div class="form-group">
+                        <label>Attachment</label>
+                        <input type="file" class="form-control" >
+                        <span class="text-left text-danger" style="font-size: 11px;">Note: Upload file should not exceed 5 MB</span>
+
+
+                         </div>
+                  </div>
+                </div>
+              
+              </div>
+              <div class="col- col-sm-9">
+                <div class="form-group">
+                  <label>Remarks </label>
+                   <textarea class="form-control" formCotrolName="remarks" style="height: 104px;"></textarea>
+                   <span class="text-left text-danger" style="font-size: 11px;">Note: Max 500 Characters Allowed </span>
+
+                   </div>
+              </div>
+               
+              
+              <div class="col-12">
+                 <div class="table-responsive mt-2">
+                  <table class="table table-bordered table-hover custom-table">
+                      <thead>
+                      <tr> <th style="width:50px"> #</th>  <th style="width:360px">File Name	</th>  <th style="width:120px"> Action</th>  </tr>
+                      </thead>
+                      <tbody>
+                      <tr><td>1</td> <td> File Name</td>  <td> <div class=""> <span class="tbl-btn"><a class="btn-table" href="#"><i class="fa fa-download text-primary"></i> </a> </span> <span class="tbl-btn"><a class="btn-table" href="#"> <i class="fa fa-trash text-danger"></i></a></span></div>
+                          </td></tr>
+                       <tr><td>2</td>  <td> File Name</td> <td> <div class=""> <span class="tbl-btn"><a class="btn-table" href="#"><i class="fa fa-download text-primary"></i> </a> </span> <span class="tbl-btn"><a class="btn-table" href="#"> <i class="fa fa-trash text-danger"></i></a></span></div></td></tr>
+                      </tbody>
+                  </table>
+              </div>
+              </div>
+            </div>
+             </form>
+          <div class="card-footer"> 
+     <div  class="text-right"> 
+               <button  class="btn btn-primary mr-1"  *ngIf="enablebutton">Apply</button>
+               <button class="btn btn-secondary" (click)="goBack()">Cancel</button></div></div>
+              
+          </div>
+      </div>
+  </div>
+     
+</div>
+  
+

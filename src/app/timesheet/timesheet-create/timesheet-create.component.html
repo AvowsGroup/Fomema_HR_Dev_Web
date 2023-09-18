@@ -1,0 +1,172 @@
+<div class="col-12 mt-3">
+  <form [formGroup]="formtimesheet" (ngSubmit)="addorupdatetimesheet(btnsave)">
+    <input type="hidden" value="{{Id}}" formControlName="id" />
+    <div class="card">
+      <div class="card-header">
+        Timesheet Management
+                  </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12"><div class="subtitle-bg mt-0 mb-2">My Current Record <b>({{clockdate}}) </b></div></div>
+          <div class="col-12">
+            
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Shift Time in</label>
+              <input class="form-control" type="time" [value]="shift_timein | date : 'HH:mm:ss'" formControlName="shift_time_in"> 
+              </div>
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Shift Time Out</label>
+              <input class="form-control" type="time" [value]="shift_timeout | date : 'HH:mm:ss'"  formControlName="shift_time_out"> 
+              </div>
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Actual Time In</label>
+              <input class="form-control" type="time" [value]="actual_timein | date : 'HH:mm:ss'" formControlName="actual_time_in"> 
+              </div>
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Actual Time Out</label>
+              <input class="form-control" type="time" [value]="actual_timeout | date : 'HH:mm:ss'" formControlName="actual_time_out"> 
+              </div>
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Actual OT Hr</label>
+              <input class="form-control" type="time" [value]="actual_othr | date : 'HH:mm:ss'" formControlName="actual_ot_hr"> 
+              </div>
+          </div>
+          
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Lateness</label>
+              <input class="form-control" type="time" [value]="lateness | date : 'HH:mm:ss'" formControlName="lateness"> 
+              </div>
+          </div>
+          <div class="col- col-sm-3">
+            <div class="form-group">
+              <label>Early Out</label>
+              <input class="form-control" type="time" [value]="earlyout | date : 'HH:mm:ss'" formControlName="earlyout"> 
+              </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-3">
+            <div class="form-group">
+              <label>Status</label>
+              <input type="text" class="form-control" formControlName="statusname">
+               </div>
+          </div>
+         </div>
+         <div class="row mt-2"> 
+          <div class="col-12"><div class="subtitle-bg mb-2"> My New Record</div></div>
+          <div class="col-12 col-xs-12 col-sm-3">
+            <div class="form-group">
+              <label>Requested Time in</label
+              >
+              <input type="time"  class="form-control"  [value]="requestedtimein | date:'HH:mm:ss'" formControlName="requested_time_in"> 
+              </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-3">
+            <div class="form-group">
+              <label>Requested Time out</label>
+              <input type="time"   class="form-control" [value]="requestedtimeout | date:'HH:mm:ss'" formControlName="requested_time_out">
+               </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-2">
+            <div class="form-group">
+              <label>Requested OT Hr</label>
+              <input type="time" class="form-control" [value]="requested_othr | date:'HH:mm:ss'" formControlName="requested_ot_hr">
+               </div>
+          </div>
+          <div class="col-12 col-xs-12 col-sm-2">
+            <div class="form-group">
+              <label>Lateness</label>
+              <input type="time" class="form-control" [value]="requested_lateness | date:'HH:mm:ss'" formControlName="requested_lateness">
+               </div>
+          </div>
+          
+     
+          <div class="col-12 col-xs-12 col-sm-2">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-12">
+                <div class="form-group">
+                <label>Early Out</label>
+                <input type="time" class="form-control" [value]="requested_early_out | date:'HH:mm:ss'" formControlName="requested_earlyout">
+                 </div></div>
+            
+             
+            </div>
+          
+          </div>
+          <div class="col- col-sm-12">
+            <div class="form-group">
+              <label>Remarks </label>
+               <textarea class="form-control" style="height: 104px;" formControlName="remarks"></textarea>
+               <span class="text-left text-danger" style="font-size: 11px;">Note: Max 500 Characters Allowed 
+              </span>
+               </div>
+              
+          </div>
+         
+          <div class="col-12 col-sm-12 col-md-4">
+            <label> Attachment </label>
+            <div class="custom-file">
+              <input
+                type="file"
+                hidden
+                #logoUpload
+                id="imageInput"
+               
+                accept="application/pdf"
+                (change)="UploadDisplayImage($event)"
+              />
+              <button
+                type="button"
+                class="btn btn-light border w-75 p-2 float-left text-left upload-img"
+                (click)="logoUpload.click()"
+              >
+                <label class="custom-file-label" style="height: 38px"
+                  >Attachment</label
+                >
+              </button>
+            </div>
+            
+            
+          </div>
+          <div class="col-12 col-sm-12 col-md-2 pt-2" >
+            <button class="btn btn-primary mt-4" type="submit">
+              <i class="fa fa-upload"></i> Upload
+            </button>
+          </div>
+       
+          <div class="col-12">
+             <div class="table-responsive mt-2">
+              <table class="table table-bordered table-hover custom-table">
+                  <thead>
+                  <tr> <th style="width:50px"> #</th>  <th style="width:360px">File Name	</th>  <th style="width:120px"> Action</th>  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of gridfileupload;let i = index"><td>{{i+1}}</td> <td> {{item.description}}</td>  <td> <div class=""> <span class="tbl-btn"><a class="btn-table"  (click)="download(item.description,item.guidfilename)"><i class="fa fa-download text-primary"></i> </a> </span> <span class="tbl-btn"><a class="btn-table" (click)="deletefileupload(item.id)"> <i class="fa fa-trash text-danger"></i></a></span></div>
+                      </td></tr>
+                  
+                  </tbody>
+                                                          </table>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"> 
+ <div  class="text-right"> 
+          <button  class="btn btn-primary mr-1"  #btnsave >Save Draft</button> 
+          <button  class="btn btn-primary mr-1" id="btnapply" formControlName="statusname" value="Applied">Apply</button>
+          <a  class="btn btn-danger" (click)="goback()">Cancel</a></div></div>
+         
+      </div>
+  </form>
+    </div>
+
+ 
